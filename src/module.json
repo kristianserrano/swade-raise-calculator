@@ -1,0 +1,38 @@
+{
+	"title": "Card Hands List",
+	"id": "swade-raise-calculator",
+	"name": "swade-raise-calculator",
+	"description": "A module to list owned card hands.",
+	"version": "1.2.0",
+	"compatibility": {
+		"minimum": "10",
+		"verified": "11"
+	},
+	"authors": [
+		{
+			"name": "Kristian Serrano",
+			"email": "kristianserrano@gmail.com",
+			"discord": "Kristian Serrano#5077",
+			"url": "https://gitlab.com/kristianserrano",
+			"flags": {}
+		}
+	],
+	"esmodules": [
+		"scripts/swade-raise-calculator.js"
+	],
+	"styles": [
+		"styles/swade-raise-calculator.css"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json",
+			"flags": {}
+		}
+	],
+	"url": "https://gitlab.com/kristianserrano/swade-raise-calculator",
+	"update": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/module.json",
+	"download": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/swade-raise-calculator-1.2.0.zip",
+	"manifest": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/module.json"
+}

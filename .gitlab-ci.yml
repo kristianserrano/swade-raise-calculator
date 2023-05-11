@@ -1,0 +1,30 @@
+workflow:
+  script:
+  - export
+  rules:
+  - if: $CI_COMMIT_TAG
+
+build:
+  image: node:18
+  stage: build
+  script:
+    - cp example-foundryconfig.json foundryconfig.json
+    - npm install
+    - npm install --global gulp-cli
+    - gulp package
+    - mkdir swade-raise-calculator
+    - cp package/swade-raise-calculator-*.zip swade-raise-calculator
+    - cp dist/module.json swade-raise-calculator
+  artifacts:
+    paths:
+      - swade-raise-calculator
+    when: always
+
+deploy to s3:
+  stage: deploy
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  script:
+    - aws --version
+    - aws s3 cp swade-raise-calculator s3://kristianserrano/foundryvtt/swade-raise-calculator --acl public-read --recursive
