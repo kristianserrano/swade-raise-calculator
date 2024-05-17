@@ -14,7 +14,6 @@ Hooks.on('init', () => {
     });
 });
 
-
 Hooks.on('setup', () => {
     // Preload the template and render the UI
     loadTemplates([
@@ -22,16 +21,21 @@ Hooks.on('setup', () => {
     ]);
 });
 
-Hooks.on('ready', () => {
-    const rc = new RaiseCalculator();
-    const rcButton = document.createElement('a')
-    rcButton.setAttribute('aria-label', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
-    rcButton.setAttribute('role', 'button');
-    rcButton.setAttribute('data-tooltip', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
-    rcButton.classList.add('open-raise-calc');
-    const icon = document.createElement('i');
-    icon.classList.add('fas', 'fa-calculator');
-    rcButton.append(icon);
-    rcButton.addEventListener('click', () => rc.render(true));
-    document.querySelector('#chat-controls .chat-control-icon')?.insertAdjacentElement("afterend", rcButton);
-})
+Hooks.on('renderSwadeChatLog', (SwadeChatLog, html, options) => {
+    if (!ui.windows.SWADERaiseCalculator) {
+        ui.windows.SWADERaiseCalculator = new RaiseCalculator();
+    }
+
+    if (!html[0].querySelector('.open-raise-calc')) {
+        const rcButton = document.createElement('a');
+        rcButton.setAttribute('aria-label', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
+        rcButton.setAttribute('role', 'button');
+        rcButton.setAttribute('data-tooltip', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
+        rcButton.classList.add('open-raise-calc');
+        const icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-calculator');
+        rcButton.append(icon);
+        rcButton.addEventListener('click', () => ui.windows.SWADERaiseCalculator.render(true));
+        html[0].querySelector('#chat-controls .chat-control-icon').insertAdjacentElement("afterend", rcButton);
+    }
+});
