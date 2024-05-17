@@ -3,9 +3,9 @@
 	"id": "swade-raise-calculator",
 	"name": "swade-raise-calculator",
 	"description": "A quick reference raise calculator application for Savage Worlds.",
-	"version": "1.2.0",
+	"version": "",
 	"compatibility": {
-		"minimum": "10",
+		"minimum": "11",
 		"verified": "11"
 	},
 	"authors": [
@@ -17,6 +17,14 @@
 			"flags": {}
 		}
 	],
+	"relationships": {
+		"systems": [
+			{
+				"id": "swade",
+				"type": "system"
+			}
+		]
+	},
 	"esmodules": [
 		"modules/swade-raise-calculator.mjs"
 	],
