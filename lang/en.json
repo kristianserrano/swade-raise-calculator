@@ -1,7 +1,7 @@
 {
     "SWADERaiseCalculator": {
         "RowCount": {
-            "Name": "Button Count",
+            "Name": "Buttow Rows",
             "Hint": "Sets the number of button rows in the calculator."
         },
         "Calculator": {
