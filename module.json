@@ -1,8 +1,8 @@
 {
-	"title": "Card Hands List",
+	"title": "SWADE Raise Calculator",
 	"id": "swade-raise-calculator",
 	"name": "swade-raise-calculator",
-	"description": "A module to list owned card hands.",
+	"description": "A quick reference raise calculator application for Savage Worlds.",
 	"version": "1.2.0",
 	"compatibility": {
 		"minimum": "10",
@@ -18,7 +18,7 @@
 		}
 	],
 	"esmodules": [
-		"scripts/swade-raise-calculator.js"
+		"modules/swade-raise-calculator.mjs"
 	],
 	"styles": [
 		"styles/swade-raise-calculator.css"
@@ -31,8 +31,22 @@
 			"flags": {}
 		}
 	],
-	"url": "https://gitlab.com/kristianserrano/swade-raise-calculator",
-	"update": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/module.json",
-	"download": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/swade-raise-calculator-1.2.0.zip",
-	"manifest": "https://kristianserrano.s3.amazonaws.com/foundryvtt/swade-raise-calculator/module.json"
+	"url": "https://github.com/kristianserrano/swade-raise-calculator",
+	"download": "",
+	"manifest": "",
+	"flags": {
+		"hotReload": {
+			"extensions": [
+				"css",
+				"json",
+				"hbs",
+				"mjs"
+			],
+			"paths": [
+				"styles",
+				"templates",
+				"modules"
+			]
+		}
+	}
 }

@@ -1,0 +1,15 @@
+<form>
+    <div class="output-container">
+        {{#if description}}
+        <div id="output">
+            <h2>{{#if raises}}{{raises}} {{/if}}{{description}}</h2>
+            <p>{{comparison}}</p>
+        </div>
+        {{/if}}
+    </div>
+    <div id="number-grid">
+        {{#each numbers}}
+        <button type="button" id="{{id}}" class="number-button {{#if selected}}clicked{{/if}}">{{value}}</button>
+        {{/each}}
+    </div>
+</form>
