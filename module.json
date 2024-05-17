@@ -45,7 +45,8 @@
 			"paths": [
 				"styles",
 				"templates",
-				"modules"
+				"modules",
+				"lang"
 			]
 		}
 	}
