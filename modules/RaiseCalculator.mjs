@@ -4,6 +4,7 @@ export class RaiseCalculator extends Application {
         super(options);
         this.clickCount = 0;
         this.values = [];
+        this.appId = this.id;
     }
 
     static get defaultOptions() {
@@ -12,7 +13,7 @@ export class RaiseCalculator extends Application {
             title: 'Raise Calculator',
             template: `modules/swade-raise-calculator/templates/raise-calculator.hbs`,
             classes: ['swade-app'],
-            height: 405,
+            height: 365,
             width: 200,
             closeOnSubmit: false,
             submitOnClose: false,
@@ -27,7 +28,8 @@ export class RaiseCalculator extends Application {
 
     getData() {
         this.numbers = [];
-        for (let i = 0; i < 60; i++) {
+        const rows = game.settings.get('swade-raise-calculator', 'row-count');
+        for (let i = 0; i < rows * 4; i++) {
             this.numbers.push({
                 value: i + 1,
                 id: i + 1,
@@ -50,45 +52,41 @@ export class RaiseCalculator extends Application {
         }
 
         const button = event.currentTarget;
-        const number = Number(button.innerText);
+        const number = Number(button.dataset.number);
 
         if (this.clickCount === 0) {
-            const previouslyClickedButtons = button.parentElement.querySelectorAll('.clicked, .tn');
+            const previouslyClickedButtons = button.parentElement.querySelectorAll('.clicked');
 
             for (const button of previouslyClickedButtons) {
                 button.classList.remove('clicked');
-                button.classList.remove('tn');
             }
         }
 
         this.clickCount ++;
         this.values.push(number);
 
-        if (this.clickCount === 1) {
-            button.classList.add('tn');
-        } else if (this.clickCount === 2) {
+        if (this.clickCount === 2) {
             this.clickCount = 0;
         }
 
         if (this.values.length === 2) {
             this.raises = this.calculateRaises();
-            this.comparison = `Roll ${this.values[1]} vs. TN ${this.values[0]}`;
+            this.comparison = game.i18n.format('SWADERaiseCalculator.Calculator.Comparison', { "roll": this.values[1], "tn": this.values[0]});
 
             if (this.raises === 0) {
                 if (this.values[1] >= this.values[0]) {
-                    this.description = 'Success!';
+                    this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Success');
                 } else {
-                    this.description = 'Failure!';
+                    this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Failure');
                 }
             } else {
                 if (this.raises === 1) {
-                    this.description = 'Raise!';
+                    this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Raise');
                 } else {
-                    this.description = 'Raises!';
+                    this.description = game.i18n.format('SWADERaiseCalculator.Calculator.Raises', {raises: this.raises});
                 }
             }
             const output = button.parentElement.parentElement.querySelector('.output-container');
-            console.log(output.scrollTop)
             output.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
             this.comparison = '';
