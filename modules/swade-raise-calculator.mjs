@@ -22,8 +22,8 @@ Hooks.on('setup', () => {
 });
 
 Hooks.on('renderSwadeChatLog', (SwadeChatLog, html, options) => {
-    if (!ui.windows.SWADERaiseCalculator) {
-        ui.windows.SWADERaiseCalculator = new RaiseCalculator();
+    if (!CONFIG.SWADERaiseCalculator) {
+        CONFIG.SWADERaiseCalculator = new RaiseCalculator();
     }
 
     if (!html[0].querySelector('.open-raise-calc')) {
@@ -35,7 +35,7 @@ Hooks.on('renderSwadeChatLog', (SwadeChatLog, html, options) => {
         const icon = document.createElement('i');
         icon.classList.add('fas', 'fa-calculator');
         rcButton.append(icon);
-        rcButton.addEventListener('click', () => ui.windows.SWADERaiseCalculator.render(true));
+        rcButton.addEventListener('click', () => CONFIG.SWADERaiseCalculator.render(true));
         html[0].querySelector('#chat-controls .chat-control-icon').insertAdjacentElement("afterend", rcButton);
     }
 });
