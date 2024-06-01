@@ -1,18 +1,18 @@
 #swade-raise-calculator {
     --spacing: 4px;
 
-    .window-content {
+    & .window-content {
         padding: var(--spacing) var(--spacing) var(--spacing);
     }
 
-    form {
+    & form {
         display: grid;
         gap: var(--spacing);
         margin: 0;
         padding: 0;
     }
 
-    .output-container {
+    & .output-container {
         display: grid;
         grid-template-rows: repeat(1, 4em);
         gap: var(--spacing);
@@ -24,17 +24,17 @@
         background-color: var(--color-shadow-dark);
     }
 
-    #output {
+    & #output {
         text-align: center;
         font-size: 0.9em;
 
-        h2 {
+        & h2 {
             margin: 0;
             border: none;
         }
     }
 
-    #number-grid {
+    & #number-grid {
         --button-size: 40px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -42,7 +42,7 @@
         grid-auto-flow: row;
         gap: var(--spacing);
 
-        .number-button {
+        & .number-button {
             display: flex;
             justify-content: center;
             align-items: center;
