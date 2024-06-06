@@ -1,0 +1,18 @@
+{
+    "SWADERaiseCalculator": {
+        "RowCount": {
+            "Name": "Button-Zeilen",
+            "Hint": "Legt die Zahl der Button-Zeilen im Rechner fest."
+        },
+        "Calculator": {
+            "Comparison": "Wurf: {roll} vs. ZW {tn}",
+            "Success": "Erfolg!",
+            "Failure": "Fehlschlag!",
+            "Raise": "1 Steigerung!",
+            "Raises": "{raises} Steigerungen!"
+        },
+        "OpenCalculatorButton": {
+            "AltText": "Steigerungs-Rechner öffnen"
+        }
+    }
+}
