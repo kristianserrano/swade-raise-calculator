@@ -1,5 +1,9 @@
 # SWADE Raise Calculator
 
+## v1.0.3
+
+- Adds German translation.
+
 ## v1.0.2
 
 - Potential nested CSS bug fix.
