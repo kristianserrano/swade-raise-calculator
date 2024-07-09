@@ -48,6 +48,9 @@
 	"url": "https://github.com/kristianserrano/swade-raise-calculator",
 	"download": "",
 	"manifest": "",
+	"changelog": "https://github.com/kristianserrano/swade-raise-calculator/blob/main/CHANGELOG.md",
+	"readme": "https://github.com/kristianserrano/swade-raise-calculator/blob/main/README.md",
+	"bugs": "https://github.com/kristianserrano/swade-raise-calculator/issues",
 	"flags": {
 		"hotReload": {
 			"extensions": [
