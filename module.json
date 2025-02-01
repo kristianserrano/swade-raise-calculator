@@ -1,22 +1,25 @@
 {
-	"title": "SWADE Raise Calculator",
 	"id": "swade-raise-calculator",
-	"name": "swade-raise-calculator",
+	"title": "SWADE Raise Calculator",
+	"authors": [
+		{
+			"name": "Kristian Serrano",
+			"url": "https://immaterialplane.com",
+			"discord": "kristianserrano"
+		}
+	],
 	"description": "A quick reference raise calculator application for Savage Worlds.",
 	"version": "",
+	"url": "",
+	"download": "",
+	"manifest": "",
+	"changelog": "",
+	"readme": "",
+	"bugs": "",
 	"compatibility": {
 		"minimum": "11",
 		"verified": "12"
 	},
-	"authors": [
-		{
-			"name": "Kristian Serrano",
-			"email": "kristianserrano@gmail.com",
-			"discord": "Kristian Serrano#5077",
-			"url": "https://gitlab.com/kristianserrano",
-			"flags": {}
-		}
-	],
 	"relationships": {
 		"systems": [
 			{
@@ -45,12 +48,6 @@
 			"flags": {}
 		}
 	],
-	"url": "https://github.com/kristianserrano/swade-raise-calculator",
-	"download": "",
-	"manifest": "",
-	"changelog": "https://github.com/kristianserrano/swade-raise-calculator/blob/main/CHANGELOG.md",
-	"readme": "https://github.com/kristianserrano/swade-raise-calculator/blob/main/README.md",
-	"bugs": "https://github.com/kristianserrano/swade-raise-calculator/issues",
 	"flags": {
 		"hotReload": {
 			"extensions": [
