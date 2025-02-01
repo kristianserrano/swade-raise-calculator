@@ -1,4 +1,6 @@
-import { RaiseCalculator } from "./RaiseCalculator.mjs";
+import { RaiseCalculator } from "./RaiseCalculatorV2.mjs";
+
+//CONFIG.debug.hooks = true;
 
 Hooks.on('init', () => {
     game.settings.register('swade-raise-calculator', 'row-count', {
@@ -21,21 +23,23 @@ Hooks.on('setup', () => {
     ]);
 });
 
-Hooks.on('renderSwadeChatLog', (SwadeChatLog, html, options) => {
+Hooks.on('renderSceneControls', (SwadeChatLog, html, options) => {
     if (!CONFIG.SWADERaiseCalculator) {
         CONFIG.SWADERaiseCalculator = new RaiseCalculator();
     }
 
-    if (!html[0].querySelector('.open-raise-calc')) {
-        const rcButton = document.createElement('a');
+    if (!html.querySelector('.open-raise-calc')) {
+        const rcButton = document.createElement('button');
         rcButton.setAttribute('aria-label', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
         rcButton.setAttribute('role', 'button');
         rcButton.setAttribute('data-tooltip', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
-        rcButton.classList.add('open-raise-calc');
-        const icon = document.createElement('i');
-        icon.classList.add('fas', 'fa-calculator');
-        rcButton.append(icon);
-        rcButton.addEventListener('click', () => CONFIG.SWADERaiseCalculator.render(true));
-        html[0].querySelector('#chat-controls .chat-control-icon').insertAdjacentElement("afterend", rcButton);
+        rcButton.classList.add('control', 'ui-control', 'layer', 'icon', 'fas', 'fa-calculator', 'open-raise-calc');
+        rcButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            CONFIG.SWADERaiseCalculator.render(true);
+        });
+        const li = document.createElement('li');
+        li.appendChild(rcButton);
+        html.querySelector('#scene-controls-layers').insertAdjacentElement("beforeend", li);
     }
 });

@@ -1,5 +1,6 @@
 {
     "SWADERaiseCalculator": {
+        "Title": "Raise Calculator",
         "RowCount": {
             "Name": "Buttow Rows",
             "Hint": "Sets the number of button rows in the calculator."

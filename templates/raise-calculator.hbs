@@ -1,15 +1,11 @@
 <form>
-    <div class="output-container">
-        {{#if description}}
-        <div id="output">
-            <h2>{{description}}</h2>
-            <p>{{comparison}}</p>
-        </div>
-        {{/if}}
+    <div class="output-container {{#if (eq values.length 2)}}{{#if (gte values.[1] values.[0])}}success{{else}}failure{{/if}}{{/if}}">
+        <h2>{{description}}</h2>
+        <p>{{comparison}}</p>
     </div>
     <div id="number-grid">
         {{#each numbers}}
-        <button type="button" id="{{id}}" class="number-button {{#if selected}}clicked{{/if}}" data-number="{{value}}">{{value}}</button>
+        <button type="button" id="{{id}}" class="number-button {{#if selected}}clicked{{/if}}" data-number="{{value}}" data-action="processInput">{{value}}</button>
         {{/each}}
     </div>
 </form>
