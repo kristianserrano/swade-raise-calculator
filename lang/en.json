@@ -6,7 +6,7 @@
             "Hint": "Sets the number of button rows in the calculator."
         },
         "Calculator": {
-            "Comparison": "Rolled {roll} vs. TN {tn}",
+            "Comparison": "{roll} {sign} TN {tn}",
             "Success": "Success!",
             "Failure": "Failure!",
             "Raise": "1 Raise!",

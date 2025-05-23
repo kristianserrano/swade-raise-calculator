@@ -5,7 +5,7 @@
             "Hint": "Legt die Zahl der Button-Zeilen im Rechner fest."
         },
         "Calculator": {
-            "Comparison": "Wurf: {roll} vs. ZW {tn}",
+            "Comparison": "{roll} {sign} ZW {tn}",
             "Success": "Erfolg!",
             "Failure": "Fehlschlag!",
             "Raise": "1 Steigerung!",

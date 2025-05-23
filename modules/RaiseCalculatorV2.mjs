@@ -4,7 +4,6 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
     static DEFAULT_OPTIONS = {
         tag: 'form',
         id: 'swade-raise-calculator',
-        classes: ['swade-app'],
         form: {
             closeOnSubmit: false,
             submitOnClose: false,
@@ -14,8 +13,8 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
             processInput: RaiseCalculator.processInput,
         },
         position: {
-            height: 365,
-            width: 200,
+            height: 380,
+            width: 'auto',
         },
         window: {
             resizable: true,
@@ -26,15 +25,12 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
         raiseCalculator: {
             root: true,
             template: 'modules/swade-raise-calculator/templates/raise-calculator.hbs',
-            scrollable: ['']
+            scrollable: ['.number-grid']
         }
-    }
+    };
 
     get title() {
         return game.i18n.format('SWADERaiseCalculator.Title');
-    }
-
-    _onRender(context, options) {
     }
 
     async _prepareContext(options = {}) {
@@ -70,7 +66,7 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
 
-        this.clickCount ++;
+        this.clickCount++;
         this.values.push(number);
 
         if (this.clickCount === 2) {
@@ -79,21 +75,33 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
 
         if (this.values.length === 2) {
             this.raises = this.calculateRaises();
-            this.comparison = game.i18n.format('SWADERaiseCalculator.Calculator.Comparison', { "roll": this.values[1], "tn": this.values[0]});
+            let sign = '';
 
             if (this.raises === 0) {
                 if (this.values[1] >= this.values[0]) {
                     this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Success');
+                    sign = this.values[1] === this.values[0] ? '=' : '>';
                 } else {
                     this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Failure');
+                    sign = '<';
                 }
             } else {
                 if (this.raises === 1) {
                     this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Raise');
                 } else {
-                    this.description = game.i18n.format('SWADERaiseCalculator.Calculator.Raises', {raises: this.raises});
+                    this.description = game.i18n.format('SWADERaiseCalculator.Calculator.Raises', { raises: this.raises });
                 }
+
+                sign = '>';
             }
+
+            this.comparison = game.i18n.format('SWADERaiseCalculator.Calculator.Comparison',
+                {
+                    "roll": this.values[1],
+                    "sign": sign,
+                    "tn": this.values[0]
+                });
+
             const output = target.parentElement.parentElement.querySelector('.output-container');
             output.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
@@ -101,7 +109,7 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
             this.description = '';
         }
 
-        this.render({values: this.values, raises: this.raises, comparison: this.comparison, description: this.description, clickCount: this.clickCount});
+        this.render({ values: this.values, raises: this.raises, comparison: this.comparison, description: this.description, clickCount: this.clickCount });
     }
 
     calculateRaises() {

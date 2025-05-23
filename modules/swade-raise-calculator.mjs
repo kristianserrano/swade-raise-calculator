@@ -11,7 +11,7 @@ Hooks.on('init', () => {
         type: Number,
         default: 6,
         onChange: () => {
-            ui.windows['swade-raise-calculator']?.render(false);
+            foundry.applications.instances.get('swade-raise-calculator')?.render(false);
         }
     });
 });
@@ -30,9 +30,16 @@ Hooks.on('renderSceneControls', (SwadeChatLog, html, options) => {
 
     if (!html.querySelector('.open-raise-calc')) {
         const rcButton = document.createElement('button');
-        rcButton.setAttribute('aria-label', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
-        rcButton.setAttribute('role', 'button');
-        rcButton.setAttribute('data-tooltip', game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'));
+        const attributes = {
+            'aria-label': game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'),
+            'role': 'button',
+            'data-tooltip': game.i18n.localize('SWADERaiseCalculator.OpenCalculatorButton.AltText'),
+        };
+
+        for (const key in attributes) {
+            rcButton.setAttribute(key, attributes[key]);
+        }
+
         rcButton.classList.add('control', 'ui-control', 'layer', 'icon', 'fas', 'fa-calculator', 'open-raise-calc');
         rcButton.addEventListener('click', (e) => {
             e.preventDefault();
