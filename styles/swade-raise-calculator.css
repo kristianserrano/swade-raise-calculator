@@ -16,17 +16,17 @@
             gap: var(--spacing);
             font-family: var(--font-monospace);
             text-align: center;
-            background-color: var(--color-dark-4);
+            background-color: #767964;
             overflow: hidden;
 
             &.success {
-                color: var(--color-dark-1);
-                background-color: var(--color-level-success-bg);
+                color: #1d3c02;
+                background-color: #85e42f99;
             }
 
             &.failure {
-                color: var(--color-dark-1);
-                background-color: var(--color-level-error-bg);
+                color: #ea4731;
+                background-color: #270c0c;
             }
 
             h2 {
