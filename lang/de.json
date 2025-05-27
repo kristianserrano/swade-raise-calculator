@@ -1,8 +1,23 @@
 {
     "SWADERaiseCalculator": {
-        "RowCount": {
-            "Name": "Button-Zeilen",
-            "Hint": "Legt die Zahl der Button-Zeilen im Rechner fest."
+        "Title": "Raise Calculator",
+        "Settings": {
+            "RowCount": {
+                "Name": "Button-Zeilen",
+                "Hint": "Legt die Zahl der Button-Zeilen im Rechner fest."
+            },
+            "ScreenTheme": {
+                "Name": "Screen Theme",
+                "Hint": "Choose the theme for the calculator screen.",
+                "Themes": {
+                    "Grey": "Grey",
+                    "Amber": "Amber",
+                    "AmberDark": "Amber Dark",
+                    "Green": "Green",
+                    "Red": "Red",
+                    "Indiglo": "Indiglo™"
+                }
+            }
         },
         "Calculator": {
             "Comparison": "{roll} {sign} ZW {tn}",
