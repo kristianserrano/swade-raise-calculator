@@ -1,5 +1,13 @@
 # SWADE Raise Calculator
 
+## v2.2.0
+
+- Adds brightness setting.
+- Adds consistent background coloring between light and dark themes.
+- Fixes retention of display output.
+- Enables refreshing respective app part when settings change.
+- Adds reserved trademark statement for INDIGLO®.
+
 ## v2.1.0
 
 - Adds settings for changing the display color.
