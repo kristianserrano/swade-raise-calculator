@@ -40,6 +40,8 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
         context.numbers = [];
         const rows = game.settings.get('swade-raise-calculator', 'row-count');
 
+        context.screenTheme = game.settings.get('swade-raise-calculator', 'screen-theme');
+
         for (let i = 0; i < rows * 4; i++) {
             context.numbers.push({
                 value: i + 1,

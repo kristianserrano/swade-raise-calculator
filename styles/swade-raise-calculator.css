@@ -2,8 +2,11 @@
 
 @layer swade-raise-calculator {
     #swade-raise-calculator {
+        --screen-foreground-color: #0c1b0e;
+        --screen-background-color: #767964;
         --spacing: 0.5em;
         width: 236px;
+
 
         .output-container {
             min-height: 100px;
@@ -16,17 +19,33 @@
             gap: var(--spacing);
             font-family: var(--font-monospace);
             text-align: center;
-            background-color: #767964;
+            color: var(--screen-foreground-color);
+            background-color: var(--screen-background-color);
             overflow: hidden;
 
-            &.success {
-                color: #1d3c02;
-                background-color: #85e42f99;
+            &.green {
+                --screen-foreground-color: #1d3c02;
+                --screen-background-color: #85e42f99;
             }
 
-            &.failure {
-                color: #ea4731;
-                background-color: #270c0c;
+            &.red {
+                --screen-foreground-color: #ea4731;
+                --screen-background-color: #270c0c;
+            }
+
+            &.amber {
+                --screen-foreground-color: #1e1312;
+                --screen-background-color: #fd7300;
+
+            }
+
+            &.amber-dark {
+                --screen-foreground-color: #fd7300;
+                --screen-background-color: #1e1312;
+            }
+
+            &.indiglo {
+                --screen-background-color: #5df9fa;
             }
 
             h2 {

@@ -4,14 +4,34 @@ import { RaiseCalculator } from "./RaiseCalculator.mjs";
 
 Hooks.on('init', () => {
     game.settings.register('swade-raise-calculator', 'row-count', {
-        name: `SWADERaiseCalculator.RowCount.Name`,
-        hint: `SWADERaiseCalculator.RowCount.Hint`,
+        name: `SWADERaiseCalculator.Settings.RowCount.Name`,
+        hint: `SWADERaiseCalculator.Settings.RowCount.Hint`,
         scope: 'world',
         config: true,
         type: Number,
         default: 6,
         onChange: () => {
             foundry.applications.instances.get('swade-raise-calculator')?.render(false);
+        }
+    });
+
+    game.settings.register('swade-raise-calculator', 'screen-theme', {
+        hint: 'SWADERaiseCalculator.Settings.ScreenTheme.Hint',
+        name: 'SWADERaiseCalculator.Settings.ScreenTheme.Name',
+        scope: 'client',
+        type: String,
+        default:'grey',
+        choices: {
+            'grey': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Grey'),
+            'green': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Green'),
+            'red': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Red'),
+            'amber': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Amber'),
+            'amber-dark': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.AmberDark'),
+            'indiglo': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Indiglo'),
+        },
+        config: true,
+        onChange: () => {
+            foundry.applications.instances.get('swade-raise-calculator')?.render();
         }
     });
 });
