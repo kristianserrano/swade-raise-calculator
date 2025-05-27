@@ -1,5 +1,10 @@
 # SWADE Raise Calculator
 
+## v1.1.0
+
+- Adds settings for changing the display color.
+- Removes display colors based on success or failure.
+
 ## v1.0.4
 
 - Updates verified compatibility to v12.
