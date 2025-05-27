@@ -2,13 +2,26 @@
 
 @layer swade-raise-calculator {
     #swade-raise-calculator {
-        --screen-foreground-color: #0c1b0e;
-        --screen-background-color: #767964;
         --spacing: 0.5em;
+        --grey-screen-foreground-color: #0c1b0e;
+        --grey-screen-background-color: #767964;
+        --green-screen-foreground-color: #1d3c02;
+        --green-screen-background-color: #85e42f99;
+        --red-screen-foreground-color: #ea4731;
+        --red-screen-background-color: #270c0c;
+        --amber-screen-foreground-color: #1e1312;
+        --amber-screen-background-color: #fd7300;
+        --amber-dark-screen-foreground-color: #fd7300;
+        --amber-dark-screen-background-color: #1e1312;
+        --indiglo-screen-foreground-color: var(--grey-screen-foreground-color);
+        --indiglo-screen-background-color: #5df9fa;
+        --screen-foreground-color: var(--grey-screen-foreground-color);
+        --screen-background-color: var(--grey-screen-background-color);
+
         width: 236px;
 
-
-        .output-container {
+        .screen {
+            position: relative;
             min-height: 100px;
             margin: 0 12px var(--spacing) 12px;
             padding: var(--spacing);
@@ -20,46 +33,64 @@
             font-family: var(--font-monospace);
             text-align: center;
             color: var(--screen-foreground-color);
-            background-color: var(--screen-background-color);
+            background-color: var(--grey-screen-background-color);
             overflow: hidden;
 
+            &.grey {
+                --screen-foreground-color: var(--grey-screen-foreground-color);
+                --screen-background-color: var(--grey-screen-background-color);
+            }
+
             &.green {
-                --screen-foreground-color: #1d3c02;
-                --screen-background-color: #85e42f99;
+                --screen-foreground-color: var(--green-screen-foreground-color);
+                --screen-background-color: var(--green-screen-background-color);
             }
 
             &.red {
-                --screen-foreground-color: #ea4731;
-                --screen-background-color: #270c0c;
+                --screen-foreground-color: var(--red-screen-foreground-color);
+                --screen-background-color: var(--red-screen-background-color);
             }
 
             &.amber {
-                --screen-foreground-color: #1e1312;
-                --screen-background-color: #fd7300;
+                --screen-foreground-color: var(--amber-screen-foreground-color);
+                --screen-background-color: var(--amber-screen-background-color);
 
             }
 
             &.amber-dark {
-                --screen-foreground-color: #fd7300;
-                --screen-background-color: #1e1312;
+                --screen-foreground-color: var(--amber-dark-screen-foreground-color);
+                --screen-background-color: var(--amber-dark-screen-background-color);
             }
 
             &.indiglo {
-                --screen-background-color: #5df9fa;
+                --screen-foreground-color: var(--indiglo-screen-foreground-color);
+                --screen-background-color: var(--indiglo-screen-background-color);
+            }
+
+            .screen-background-top-layer {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--screen-background-color);
             }
 
             h2 {
+                position: relative;
                 margin: 0;
                 font-family: var(--font-monospace);
                 font-size: 1.25em;
-                color: currentColor;
+                color: var(--screen-foreground-color);
                 border: none;
             }
 
             p {
+                position: relative;
                 margin: 0;
                 font-size: 1em;
                 font-weight: bold;
+                color: var(--screen-foreground-color);
             }
         }
 

@@ -11,7 +11,7 @@ Hooks.on('init', () => {
         type: Number,
         default: 6,
         onChange: () => {
-            foundry.applications.instances.get('swade-raise-calculator')?.render(false);
+            foundry.applications.instances.get('swade-raise-calculator')?.render({ parts: ['buttons'] });
         }
     });
 
@@ -20,7 +20,7 @@ Hooks.on('init', () => {
         name: 'SWADERaiseCalculator.Settings.ScreenTheme.Name',
         scope: 'client',
         type: String,
-        default:'grey',
+        default: 'grey',
         choices: {
             'grey': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Grey'),
             'green': game.i18n.localize('SWADERaiseCalculator.Settings.ScreenTheme.Themes.Green'),
@@ -31,15 +31,34 @@ Hooks.on('init', () => {
         },
         config: true,
         onChange: () => {
-            foundry.applications.instances.get('swade-raise-calculator')?.render();
+            foundry.applications.instances.get('swade-raise-calculator')?.render({ parts: ['screen'] });
         }
     });
+
+    game.settings.register('swade-raise-calculator', 'screen-brightness', {
+        hint: 'SWADERaiseCalculator.Settings.ScreenBrightness.Hint',
+        name: 'SWADERaiseCalculator.Settings.ScreenBrightness.Name',
+        scope: 'client',
+        type: Number,
+        default: 0.75,
+        range: {
+            min: 0.1,
+            step: 0.05,
+            max: 1,
+        },
+        config: true,
+        onChange: () => {
+            foundry.applications.instances.get('swade-raise-calculator')?.render({ parts: ['screen'] });
+        }
+    });
+
 });
 
 Hooks.on('setup', () => {
     // Preload the template and render the UI
     loadTemplates([
-        `modules/swade-raise-calculator/templates/raise-calculator.hbs`,
+        'modules/swade-raise-calculator/templates/screen.hbs',
+        'modules/swade-raise-calculator/templates/buttons.hbs',
     ]);
 });
 

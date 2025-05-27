@@ -1,0 +1,5 @@
+<div id="number-grid" class="scrollable">
+    {{#each numbers}}
+    <button type="button" id="{{id}}" class="number-button {{#if selected}}clicked{{/if}}" data-number="{{value}}" data-action="processInput">{{value}}</button>
+    {{/each}}
+</div>

@@ -22,11 +22,13 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
     };
 
     static PARTS = {
-        raiseCalculator: {
-            root: true,
-            template: 'modules/swade-raise-calculator/templates/raise-calculator.hbs',
+        screen: {
+            template: 'modules/swade-raise-calculator/templates/screen.hbs',
+        },
+        buttons: {
+            template: 'modules/swade-raise-calculator/templates/buttons.hbs',
             scrollable: ['.number-grid']
-        }
+        },
     };
 
     get title() {
@@ -35,27 +37,42 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
 
     async _prepareContext(options = {}) {
         const context = options;
-        this.clickCount = options.clickCount || 0;
-        this.values = options.values || [];
-        context.numbers = [];
-        const rows = game.settings.get('swade-raise-calculator', 'row-count');
+        return context;
+    }
 
-        context.screenTheme = game.settings.get('swade-raise-calculator', 'screen-theme');
+    async _preparePartContext(partId, context) {
+        switch (partId) {
+            case 'screen':
+                context.comparison = this.comparison || context.comparison;
+                context.description = this.description || context.description;
+                context.screenTheme = game.settings.get('swade-raise-calculator', 'screen-theme');
+                context.brightness = game.settings.get('swade-raise-calculator', 'screen-brightness');
+                break;
+            case 'buttons':
+                this.clickCount = this.clickCount || context.clickCount;
+                this.selectedValues = this.selectedValues || [];
+                this.numbers = [];
+                const rows = game.settings.get('swade-raise-calculator', 'row-count');
 
-        for (let i = 0; i < rows * 4; i++) {
-            context.numbers.push({
-                value: i + 1,
-                id: i + 1,
-                selected: this.values.includes(i + 1)
-            });
+                for (let i = 0; i < rows * 4; i++) {
+                    this.numbers.push({
+                        value: i + 1,
+                        id: i + 1,
+                        selected: this.selectedValues.includes(i + 1)
+                    });
+                }
+
+                context.selectedValues = this.selectedValues;
+                context.numbers = this.numbers;
+                break;
         }
 
         return context;
     }
 
     static processInput(event, target) {
-        if (this.values.length === 2) {
-            this.values.length = 0;
+        if (this.selectedValues.length === 2) {
+            this.selectedValues.length = 0;
         }
 
         const number = Number(target.dataset.number);
@@ -69,20 +86,20 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
         }
 
         this.clickCount++;
-        this.values.push(number);
+        this.selectedValues.push(number);
 
         if (this.clickCount === 2) {
             this.clickCount = 0;
         }
 
-        if (this.values.length === 2) {
+        if (this.selectedValues.length === 2) {
             this.raises = this.calculateRaises();
             let sign = '';
 
             if (this.raises === 0) {
-                if (this.values[1] >= this.values[0]) {
+                if (this.selectedValues[1] >= this.selectedValues[0]) {
                     this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Success');
-                    sign = this.values[1] === this.values[0] ? '=' : '>';
+                    sign = this.selectedValues[1] === this.selectedValues[0] ? '=' : '>';
                 } else {
                     this.description = game.i18n.localize('SWADERaiseCalculator.Calculator.Failure');
                     sign = '<';
@@ -99,23 +116,29 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
 
             this.comparison = game.i18n.format('SWADERaiseCalculator.Calculator.Comparison',
                 {
-                    "roll": this.values[1],
+                    "roll": this.selectedValues[1],
                     "sign": sign,
-                    "tn": this.values[0]
+                    "tn": this.selectedValues[0]
                 });
 
-            const output = target.parentElement.parentElement.querySelector('.output-container');
+            const output = target.parentElement.parentElement.querySelector('.screen');
             output.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
             this.comparison = '';
             this.description = '';
         }
 
-        this.render({ values: this.values, raises: this.raises, comparison: this.comparison, description: this.description, clickCount: this.clickCount });
+        this.render({
+            selectedValues: this.selectedValues,
+            raises: this.raises,
+            comparison: this.comparison,
+            description: this.description,
+            clickCount: this.clickCount,
+        });
     }
 
     calculateRaises() {
-        let raises = Math.floor((this.values[1] - this.values[0]) / 4);
+        let raises = Math.floor((this.selectedValues[1] - this.selectedValues[0]) / 4);
 
         if (raises < 0) {
             raises = 0;

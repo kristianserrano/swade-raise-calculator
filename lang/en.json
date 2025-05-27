@@ -8,15 +8,19 @@
             },
             "ScreenTheme": {
                 "Name": "Screen Theme",
-                "Hint": "Choose the theme for the calculator screen.",
+                "Hint": "Choose the theme for the calculator screen. INDIGLO® is a registered trademark of Timex Group B.V. and its subsidiaries.",
                 "Themes": {
                     "Grey": "Grey",
                     "Amber": "Amber",
                     "AmberDark": "Amber Dark",
                     "Green": "Green",
                     "Red": "Red",
-                    "Indiglo": "Indiglo™"
+                    "Indiglo": "INDIGLO®"
                 }
+            },
+            "ScreenBrightness": {
+                "Name": "Screen Brightness",
+                "Hint": "Adjust the brightness of the screen."
             }
         },
         "Calculator": {
