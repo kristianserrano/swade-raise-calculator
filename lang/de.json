@@ -2,9 +2,9 @@
     "SWADERaiseCalculator": {
         "Title": "Raise Calculator",
         "Settings": {
-            "RowCount": {
-                "Name": "Button-Zeilen",
-                "Hint": "Legt die Zahl der Button-Zeilen im Rechner fest."
+            "MaxButtons": {
+                "Name": "Anzahl der Tasten",
+                "Hint": "Legt die Anzahl der im Rechner anzuzeigenden Schaltflächen fest und erhöht oder verringert so den maximalen Wurf, den er berechnen kann."
             },
             "ScreenTheme": {
                 "Name": "Screen Theme",

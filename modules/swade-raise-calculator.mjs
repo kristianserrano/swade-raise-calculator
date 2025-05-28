@@ -3,13 +3,17 @@ import { RaiseCalculator } from "./RaiseCalculator.mjs";
 //CONFIG.debug.hooks = true;
 
 Hooks.on('init', () => {
-    game.settings.register('swade-raise-calculator', 'row-count', {
-        name: `SWADERaiseCalculator.Settings.RowCount.Name`,
-        hint: `SWADERaiseCalculator.Settings.RowCount.Hint`,
+    game.settings.register('swade-raise-calculator', 'max-buttons', {
+        name: `SWADERaiseCalculator.Settings.MaxButtons.Name`,
+        hint: `SWADERaiseCalculator.Settings.MaxButtons.Hint`,
         scope: 'world',
         config: true,
         type: Number,
-        default: 6,
+        default: 24,
+        range: {
+            min: 24,
+            step: 4
+        },
         onChange: () => {
             foundry.applications.instances.get('swade-raise-calculator')?.render({ parts: ['buttons'] });
         }

@@ -52,9 +52,9 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
                 this.clickCount = this.clickCount || context.clickCount;
                 this.selectedValues = this.selectedValues || [];
                 this.numbers = [];
-                const rows = game.settings.get('swade-raise-calculator', 'row-count');
+                const buttons = game.settings.get('swade-raise-calculator', 'max-buttons');
 
-                for (let i = 0; i < rows * 4; i++) {
+                for (let i = 0; i < buttons; i++) {
                     this.numbers.push({
                         value: i + 1,
                         id: i + 1,

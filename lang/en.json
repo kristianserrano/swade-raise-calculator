@@ -2,9 +2,9 @@
     "SWADERaiseCalculator": {
         "Title": "Raise Calculator",
         "Settings": {
-            "RowCount": {
-                "Name": "Buttow Rows",
-                "Hint": "Sets the number of button rows in the calculator."
+            "MaxButtons": {
+                "Name": "Number of Buttons",
+                "Hint": "Sets the number of buttons to display in the calculator, increasing or decreasing the maximum roll it can calculate."
             },
             "ScreenTheme": {
                 "Name": "Screen Theme",
