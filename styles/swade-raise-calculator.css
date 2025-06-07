@@ -19,8 +19,8 @@
         --screen-background-color: var(--grey-screen-background-color);
         --screen-font: var(--font-monospace);
 
-        width: 236px;
-
+        min-width: fit-content;
+        max-width: max-content;
         .window-content {
             row-gap: var(--spacing);
         }

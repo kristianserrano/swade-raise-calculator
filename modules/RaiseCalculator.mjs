@@ -13,7 +13,7 @@ export class RaiseCalculator extends HandlebarsApplicationMixin(ApplicationV2) {
             processInput: RaiseCalculator.processInput,
         },
         position: {
-            height: 380,
+            height: 'auto',
             width: 'auto',
         },
         window: {
