@@ -1,5 +1,10 @@
 # SWADE Raise Calculator
 
+## v2.2.1
+
+- Reduces spacing applied by the `scrollable` class on the button grid.
+- Fixes application window resizing after Foundry VTT fixed height 'auto' bug in build 345.
+
 ## v2.2.0
 
 - Adds brightness setting.
